@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Placeholder portrait. Swap for the real Figma export (node 312:115)
+     once figma.com asset egress is available. Aspect 223x278. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="223" height="278"
+     viewBox="0 0 223 278" role="img"
+     aria-label="Portrait placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8e8e8"/>
+      <stop offset="1" stop-color="#cccccc"/>
+    </linearGradient>
+  </defs>
+  <rect width="223" height="278" fill="url(#bg)"/>
+  <g fill="#606060">
+    <circle cx="111.5" cy="95" r="45"/>
+    <path d="M111.5 150c-40 0-70 26-70 64v64h140v-64c0-38-30-64-70-64z"/>
+  </g>
+</svg>

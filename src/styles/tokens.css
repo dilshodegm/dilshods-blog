@@ -1,0 +1,67 @@
+/* ============================================================
+   Design tokens — generated from Figma "dilshod egm blog"
+   (file iqs8gKCAbHYSYQZkoZdKvM, node 312:99).
+
+   Names from Figma Variables/Styles are preserved verbatim
+   (--dark-gray, --white, --light-gray, h1, h3, body-bold).
+   The Figma file defines only colors + typography; spacing,
+   radii and breakpoints are derived from the layout and are
+   labelled as such below.
+   ============================================================ */
+:root {
+  /* ---------- Colors (Figma Variables) ---------- */
+  --dark-gray: #393939;
+  --white: #ffffff;
+  --light-gray: #e7e7e7;
+
+  /* ---------- Typography (Figma Styles) ---------- */
+  --font-family-base: "Space Mono", ui-monospace, "Cascadia Mono", monospace;
+
+  /* h1 — Space Mono Regular 32 */
+  --h1-font-size: 32px;
+  --h1-font-weight: 400;
+  --h1-line-height: 1;            /* Figma lineHeight 100% */
+  --h1-letter-spacing: -0.02em;   /* Figma tracking -2% */
+
+  /* h3 — Space Mono Regular 24 */
+  --h3-font-size: 24px;
+  --h3-font-weight: 400;
+  --h3-line-height: 1;
+  --h3-letter-spacing: -0.02em;
+
+  /* body-bold — Space Mono Bold 16 */
+  --body-bold-font-size: 16px;
+  --body-bold-font-weight: 700;
+  --body-bold-line-height: 1;
+  --body-bold-letter-spacing: 0;
+
+  /* body — derived: Space Mono Regular 16 (description / nav) */
+  --body-font-size: 16px;
+  --body-font-weight: 400;
+  --body-line-height: 1;
+  --body-letter-spacing: 0;
+
+  /* ---------- Spacing (derived from the 312:99 layout) ---------- */
+  --space-2: 2px;          /* highlight padding-y */
+  --space-4: 4px;          /* highlight padding-x */
+  --space-16: 16px;        /* name -> description gap */
+  --space-24: 24px;        /* main vertical rhythm */
+  --space-28: 28px;        /* nav link gap */
+  --space-45: 45px;        /* header top offset */
+  --space-80: 80px;        /* page side margin (desktop) */
+  --space-40: 40px;        /* page side margin (tablet) */
+  --space-20: 20px;        /* page side margin (mobile) */
+  --hero-offset: 188px;    /* header -> hero vertical gap */
+  --banner-height: 278px;  /* photo banner height (desktop) */
+  --banner-height-mobile: 220px;
+
+  /* ---------- Radii ---------- */
+  --radius-none: 0;        /* design uses no rounding */
+
+  /* ---------- Breakpoints ---------- */
+  /* NB: plain CSS cannot read a var() inside an @media condition,
+     so these values are also typed literally in the media queries.
+     These tokens are the single documented source of truth. */
+  --bp-tablet: 1024px;
+  --bp-mobile: 600px;
+}
