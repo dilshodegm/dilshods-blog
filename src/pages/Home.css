@@ -1,0 +1,194 @@
+/* Home page layout. All values reference design tokens (tokens.css);
+   the only literals are inside @media conditions, where CSS cannot read
+   a var() — those mirror --bp-tablet / --bp-mobile. */
+
+.page {
+  font-family: var(--font-family-base);
+  color: var(--dark-gray);
+  background: var(--white);
+  padding-inline: var(--space-80);
+  box-sizing: border-box;
+}
+
+/* ---------------- Header / nav ---------------- */
+.header {
+  padding-top: var(--space-45);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-24);
+  flex-wrap: wrap;
+}
+
+.nav__links,
+.nav__lang {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-28);
+}
+
+.nav__link {
+  font-size: var(--body-bold-font-size);
+  font-weight: var(--body-bold-font-weight);
+  line-height: var(--body-bold-line-height);
+  letter-spacing: var(--body-bold-letter-spacing);
+  text-transform: lowercase;
+  color: var(--dark-gray);
+  text-decoration: none;
+}
+
+.nav__link:hover {
+  text-decoration: underline;
+}
+
+.nav__link--active {
+  text-decoration: underline;
+}
+
+.nav__link:focus-visible {
+  outline: 2px solid var(--dark-gray);
+  outline-offset: 4px;
+}
+
+/* ---------------- Main ---------------- */
+.main {
+  margin-top: var(--hero-offset);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+/* ---------------- Hero ---------------- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-16);
+}
+
+.hero__name {
+  margin: 0;
+}
+
+.hero__highlight {
+  display: inline-block;
+  background: var(--dark-gray);
+  color: var(--white);
+  font-size: var(--h1-font-size);
+  font-weight: var(--h1-font-weight);
+  line-height: var(--h1-line-height);
+  letter-spacing: var(--h1-letter-spacing);
+  text-transform: lowercase;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-none);
+}
+
+.hero__desc {
+  margin: 0;
+  max-width: 510px;
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: 1.4;
+  letter-spacing: var(--body-letter-spacing);
+  text-transform: lowercase;
+  color: var(--dark-gray);
+}
+
+.hero__desc-strong {
+  font-weight: var(--body-bold-font-weight);
+}
+
+/* ---------------- Photo banner ---------------- */
+.banner {
+  width: 100%;
+  height: var(--banner-height);
+  background: var(--light-gray);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.banner__photo {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  object-position: bottom;
+  /* matches the Figma "mix-blend: multiply" treatment of the portrait */
+  mix-blend-mode: multiply;
+}
+
+/* ---------------- Footer ---------------- */
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer__cta {
+  font-family: var(--font-family-base);
+  font-size: var(--h3-font-size);
+  font-weight: var(--h3-font-weight);
+  line-height: var(--h3-line-height);
+  letter-spacing: var(--h3-letter-spacing);
+  text-transform: lowercase;
+  color: var(--dark-gray);
+  text-decoration: underline;
+}
+
+.footer__cta:focus-visible {
+  outline: 2px solid var(--dark-gray);
+  outline-offset: 4px;
+}
+
+/* ============================================================
+   Responsive — breakpoints mirror --bp-tablet / --bp-mobile
+   ============================================================ */
+
+/* Tablet — <= --bp-tablet (1024px) */
+@media (max-width: 1024px) {
+  .page {
+    padding-inline: var(--space-40);
+  }
+
+  .main {
+    margin-top: var(--space-80);
+  }
+}
+
+/* Mobile — <= --bp-mobile (600px) */
+@media (max-width: 600px) {
+  .page {
+    padding-inline: var(--space-20);
+  }
+
+  .nav {
+    align-items: flex-start;
+    gap: var(--space-16);
+  }
+
+  .nav__links {
+    gap: var(--space-16) var(--space-24);
+  }
+
+  .main {
+    margin-top: var(--space-45);
+  }
+
+  .banner {
+    height: auto;
+    min-height: var(--banner-height-mobile);
+  }
+
+  .banner__photo {
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    max-height: var(--banner-height-mobile);
+  }
+}
