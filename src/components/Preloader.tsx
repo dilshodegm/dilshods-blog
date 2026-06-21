@@ -1,15 +1,12 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
+import { gsap } from 'gsap'
 import './Preloader.css'
 
 // Tunables.
-const DURATION = 2000 // fill 0 -> 100%, ms (1500–2500)
-const HOLD = 150 // pause on the full row before fading, ms
-const FADE = 400 // fade-out, ms
+const DURATION = 2 // fill 0 -> 100%, seconds (1.5–2.5)
+const HOLD = 0.15 // pause on the full row before the reveal, seconds
+const RISE = 0.6 // background rise (bottom -> top), seconds
 const MIN_SLOTS = 8 // floor for very narrow viewports
-
-// Soft ease-in-out so the head glides rather than runs at constant speed.
-const easeInOut = (t: number) =>
-  t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
 
 type Props = { onComplete: () => void }
 
@@ -19,21 +16,20 @@ function Preloader({ onComplete }: Props) {
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   const [visible, setVisible] = useState(!prefersReduced)
-  const [fading, setFading] = useState(false)
-  const [slots, setSlots] = useState(0) // N
-  const [progress, setProgress] = useState(0) // p
+  const [slots, setSlots] = useState(0)
 
+  const overlayRef = useRef<HTMLDivElement>(null)
   const rowRef = useRef<HTMLDivElement>(null)
   const measureRef = useRef<HTMLSpanElement>(null)
-  const finishedRef = useRef(false)
+  const slotEls = useRef<HTMLSpanElement[]>([])
+  const lastPaint = useRef(-1)
 
-  // Reduced motion: never play the fill — the overlay starts hidden, so just
-  // signal completion to reveal the page immediately.
-  useEffect(() => {
+  // Reduced motion: never play — reveal the page immediately.
+  useLayoutEffect(() => {
     if (prefersReduced) onComplete()
   }, [prefersReduced, onComplete])
 
-  // Derive N from the available width so the row is always a single line.
+  // Derive slot count N from the available width so the row stays one line.
   useLayoutEffect(() => {
     if (prefersReduced) return
     const compute = () => {
@@ -42,74 +38,96 @@ function Preloader({ onComplete }: Props) {
       if (!row || !measure) return
       const charW = measure.getBoundingClientRect().width / 10
       if (!charW) return
-      // -1 keeps a hair of slack; overflow:hidden guards the rest.
       setSlots(Math.max(MIN_SLOTS, Math.floor(row.clientWidth / charW) - 1))
     }
     compute()
     window.addEventListener('resize', compute)
-    // Re-measure once the monospace webfont is ready (metrics can shift).
     document.fonts?.ready.then(compute).catch(() => {})
     return () => window.removeEventListener('resize', compute)
   }, [prefersReduced])
 
-  // Animate p from 0 to N with requestAnimationFrame.
-  useEffect(() => {
+  // Drive everything with a single GSAP timeline.
+  useLayoutEffect(() => {
     if (prefersReduced || slots === 0) return
-    let raf = 0
-    let start = 0
-    const tick = (ts: number) => {
-      if (!start) start = ts
-      const t = Math.min((ts - start) / DURATION, 1)
-      setProgress(Math.round(easeInOut(t) * slots))
-      if (t < 1) {
-        raf = requestAnimationFrame(tick)
-      } else if (!finishedRef.current) {
-        finishedRef.current = true
-        window.setTimeout(() => {
-          setFading(true)
-          window.setTimeout(() => {
+
+    // Fresh build (e.g. after a resize recomputed N): drop stale refs/state.
+    slotEls.current.length = slots
+    lastPaint.current = -1
+
+    // Paint the row for a given fill position p (head = "\" at the front).
+    const paint = (raw: number) => {
+      const n = slotEls.current.length
+      const p = Math.min(Math.max(Math.round(raw), 0), n)
+      if (p === lastPaint.current) return
+      const start = lastPaint.current < 0 ? 0 : Math.min(lastPaint.current, p)
+      for (let i = start; i <= p && i < n; i++) {
+        const el = slotEls.current[i]
+        if (!el) continue
+        if (i < p) {
+          el.textContent = '/'
+          el.className = 'pl-slash pl-slash--filled'
+        } else {
+          // i === p: the moving head (none once p reaches n)
+          el.textContent = '\\'
+          el.className = 'pl-head'
+        }
+      }
+      lastPaint.current = p
+    }
+
+    const ctx = gsap.context(() => {
+      const proxy = { value: 0 }
+      paint(0) // first frame already shows the head, no flash
+
+      gsap
+        .timeline({
+          onComplete: () => {
             setVisible(false)
             onComplete()
-          }, FADE)
-        }, HOLD)
-      }
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
+          },
+        })
+        // Fill: 0 -> N, soft ease-in-out.
+        .to(proxy, {
+          value: slots,
+          duration: DURATION,
+          ease: 'power1.inOut',
+          onUpdate: () => paint(proxy.value),
+        })
+        // Hold on the full row, then lift the background bottom -> top.
+        .to(
+          overlayRef.current,
+          { yPercent: -100, duration: RISE, ease: 'power3.inOut' },
+          `+=${HOLD}`,
+        )
+    }, overlayRef)
+
+    return () => ctx.revert()
   }, [prefersReduced, slots, onComplete])
 
   if (prefersReduced || !visible) return null
 
   const row = []
   for (let i = 0; i < slots; i++) {
-    if (i < progress) {
-      row.push(
-        <span key={i} className="pl-slash pl-slash--filled">
-          /
-        </span>,
-      )
-    } else if (i === progress) {
-      // Head only while filling; at p === N it's gone and the row is solid.
-      row.push(
-        <span key={i} className="pl-head">
-          {'\\'}
-        </span>,
-      )
-    } else {
-      row.push(
-        <span key={i} className="pl-slash">
-          /
-        </span>,
-      )
-    }
+    row.push(
+      <span
+        key={i}
+        className="pl-slash"
+        ref={(el) => {
+          if (el) slotEls.current[i] = el
+        }}
+      >
+        /
+      </span>,
+    )
   }
 
   return (
     <div
-      className={`preloader${fading ? ' preloader--fading' : ''}`}
+      className="preloader"
+      ref={overlayRef}
       role="status"
       aria-label="Loading"
-      aria-busy={!fading}
+      aria-busy="true"
     >
       <div className="preloader__inner">
         <div className="preloader__row" ref={rowRef} aria-hidden="true">
