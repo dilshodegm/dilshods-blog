@@ -8,12 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 1;
-  transition: opacity 0.4s ease;
-}
-
-.preloader--fading {
-  opacity: 0;
+  will-change: transform;
 }
 
 .preloader__inner {
