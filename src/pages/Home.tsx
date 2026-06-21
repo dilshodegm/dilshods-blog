@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { TextPlugin } from 'gsap/TextPlugin'
 // Vite resolves & fingerprints the asset (the Vite+React equivalent of
@@ -14,24 +14,36 @@ const NAME = 'dilshod egm'
 // to hide the cursor once the name is fully typed.
 const SHOW_IDLE_CURSOR = true
 
-function Home() {
-  const rootRef = useRef<HTMLDivElement>(null)
+type Props = { startTyping?: boolean }
 
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+function Home({ startTyping = false }: Props) {
+  const rootRef = useRef<HTMLDivElement>(null)
+  const typedRef = useRef(false)
+
+  // Before paint, clear the name so it never flashes behind the preloader.
+  // Under reduced motion we keep the full name in place (no typing later).
   useLayoutEffect(() => {
+    if (prefersReducedMotion()) return
+    const typed = rootRef.current?.querySelector<HTMLElement>('.hero__typed')
+    if (typed) gsap.set(typed, { text: '' })
+  }, [])
+
+  // Type the name once the preloader signals completion.
+  useEffect(() => {
+    if (!startTyping || prefersReducedMotion() || typedRef.current) return
     const root = rootRef.current
     if (!root) return
-
-    // Respect reduced motion: the full name is already in the DOM, so just
-    // leave it static (the cursor is non-blinking via CSS).
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    typedRef.current = true
 
     const ctx = gsap.context(() => {
       const typed = root.querySelector<HTMLElement>('.hero__typed')
       const cursor = root.querySelector<HTMLElement>('.hero__cursor')
       if (!typed) return
 
-      // Clear before paint so the final text never flashes, then type it out.
-      gsap.set(typed, { text: '' })
       gsap.to(typed, {
         duration: 1.0,
         ease: 'none',
@@ -43,7 +55,7 @@ function Home() {
     }, root)
 
     return () => ctx.revert()
-  }, [])
+  }, [startTyping])
 
   return (
     <div className="page" ref={rootRef}>

@@ -1,0 +1,86 @@
+/* Full-screen loading overlay. Colors / font / weights from tokens only. */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.preloader--fading {
+  opacity: 0;
+}
+
+.preloader__inner {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding-inline: var(--space-80);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+/* The slash row: one line, edge to edge, never wraps or scrolls. */
+.preloader__row {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: var(--font-family-base);
+  font-size: var(--h3-font-size);
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--dark-gray);
+}
+
+.pl-slash,
+.pl-head {
+  font-weight: var(--body-font-weight);
+}
+
+/* Filled part is *delicately* heavier — a hairline, so the row still reads
+   as one even line of slashes. Tune the blur radius to taste. */
+.pl-slash--filled {
+  text-shadow: 0 0 0.4px currentColor;
+}
+
+/* "loading..." — same mono font, noticeably smaller than the row. */
+.preloader__label {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  color: var(--dark-gray);
+}
+
+/* Offscreen ruler used to measure one monospace glyph width. */
+.preloader__measure {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: pre;
+  font-family: var(--font-family-base);
+  font-size: var(--h3-font-size);
+  letter-spacing: 0;
+}
+
+@media (max-width: 1024px) {
+  .preloader__inner {
+    padding-inline: var(--space-40);
+  }
+}
+
+@media (max-width: 600px) {
+  .preloader__inner {
+    padding-inline: var(--space-20);
+  }
+}
