@@ -54,7 +54,9 @@ function Preloader({ onComplete }: Props) {
     slotEls.current.length = slots
     lastPaint.current = -1
 
-    // Paint the row for a given fill position p (head = "\" at the front).
+    // Paint the row for a given fill position p: bars left of p are bold
+    // (filled), the rest stay thin. The bold/thin boundary is the progress
+    // front — it slides left -> right as the fill advances.
     const paint = (raw: number) => {
       const n = slotEls.current.length
       const p = Math.min(Math.max(Math.round(raw), 0), n)
@@ -63,14 +65,7 @@ function Preloader({ onComplete }: Props) {
       for (let i = start; i <= p && i < n; i++) {
         const el = slotEls.current[i]
         if (!el) continue
-        if (i < p) {
-          el.textContent = '/'
-          el.className = 'pl-slash pl-slash--filled'
-        } else {
-          // i === p: the moving head (none once p reaches n)
-          el.textContent = '\\'
-          el.className = 'pl-head'
-        }
+        el.className = i < p ? 'pl-bar pl-bar--filled' : 'pl-bar'
       }
       lastPaint.current = p
     }
@@ -111,12 +106,12 @@ function Preloader({ onComplete }: Props) {
     row.push(
       <span
         key={i}
-        className="pl-slash"
+        className="pl-bar"
         ref={(el) => {
           if (el) slotEls.current[i] = el
         }}
       >
-        /
+        |
       </span>,
     )
   }
@@ -134,7 +129,7 @@ function Preloader({ onComplete }: Props) {
           {row}
         </div>
         <span ref={measureRef} className="preloader__measure" aria-hidden="true">
-          //////////
+          ||||||||||
         </span>
         <p className="preloader__label">loading...</p>
       </div>

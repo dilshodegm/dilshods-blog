@@ -22,11 +22,14 @@
   gap: var(--space-16);
 }
 
-/* The slash row: one line, edge to edge, never wraps or scrolls. */
+/* The bar row: a centered single line, never wraps or scrolls. */
 .preloader__row {
   width: 100%;
+  max-width: 600px; /* centered segment, per the design */
+  margin: 0 auto;
   white-space: nowrap;
   overflow: hidden;
+  text-align: center;
   font-family: var(--font-family-base);
   font-size: var(--h3-font-size);
   line-height: 1;
@@ -34,15 +37,14 @@
   color: var(--dark-gray);
 }
 
-.pl-slash,
-.pl-head {
+/* Unfilled bars: thin (regular weight). */
+.pl-bar {
   font-weight: var(--body-font-weight);
 }
 
-/* Filled part is *delicately* heavier — a hairline, so the row still reads
-   as one even line of slashes. Tune the blur radius to taste. */
-.pl-slash--filled {
-  text-shadow: 0 0 0.4px currentColor;
+/* Filled bars: bold/thick — marks how much has loaded. */
+.pl-bar--filled {
+  font-weight: var(--body-bold-font-weight);
 }
 
 /* "loading..." — same mono font, noticeably smaller than the row. */
