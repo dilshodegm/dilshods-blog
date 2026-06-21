@@ -2,7 +2,7 @@
 // Astro's optimized <Image>). Replace src/assets/portrait.svg with the
 // real Figma portrait once it can be exported (egress to figma.com is
 // currently blocked, so a neutral placeholder is committed in its place).
-import portrait from '../assets/portrait.svg'
+import portrait from '../assets/portrait.png'
 import './Home.css'
 
 function Home() {
@@ -63,13 +63,15 @@ function Home() {
             decoding="async"
           />
         </section>
-      </main>
 
-      <footer className="footer">
-        <a className="footer__cta" href="mailto:dilshodegamnazarov10@gmail.com">
-          get in touch &gt;
+      <section className="touch">
+        <a className="touch__cta" href="mailto:dilshodegamnazarov10@gmail.com">
+        let's build something &gt;
+
+        {/* let's talk */}
         </a>
-      </footer>
+      </section>
+      </main>
     </div>
   )
 }
