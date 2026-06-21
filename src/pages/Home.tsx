@@ -62,10 +62,10 @@ function Home() {
               <a className="nav__link" href="/blog">blog</a>
             </li>
             <li>
-              <a className="nav__link" href="/sketch">sketch</a>
+              <a className="nav__link" href="/photography">photography</a>
             </li>
             <li>
-              <a className="nav__link" href="/photography">photography</a>
+              <a className="nav__link" href="/sketch">contact</a>
             </li>
           </ul>
           <ul className="nav__lang" aria-label="Language">
