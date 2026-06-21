@@ -51,7 +51,7 @@
   --space-80: 80px;        /* page side margin (desktop) */
   --space-40: 40px;        /* page side margin (tablet) */
   --space-20: 20px;        /* page side margin (mobile) */
-  --hero-offset: 188px;    /* header -> hero vertical gap */
+  --hero-offset: 162px;    /* header -> hero vertical gap */
   --banner-height: 278px;  /* photo banner height (desktop) */
   --banner-height-mobile: 220px;
 
