@@ -1,28 +1,18 @@
 import { useLayoutEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
+import { TextPlugin } from 'gsap/TextPlugin'
 // Vite resolves & fingerprints the asset (the Vite+React equivalent of
-// Astro's optimized <Image>). Replace src/assets/portrait.svg with the
-// real Figma portrait once it can be exported (egress to figma.com is
-// currently blocked, so a neutral placeholder is committed in its place).
+// Astro's optimized <Image>).
 import portrait from '../assets/portrait.png'
 import './Home.css'
 
-gsap.registerPlugin(ScrambleTextPlugin)
+gsap.registerPlugin(TextPlugin)
 
-// Lowercase + a few "terminal" glyphs — restrained, to match the
-// monospace black-and-white style without looking noisy.
-const SCRAMBLE_CHARS = 'abcdefghijklmnopqrstuvwxyz!<>-_/\\[]'
+const NAME = 'dilshod egm'
 
-// Shared scrambleText config — tweenLength:false keeps the string length
-// fixed so the monospace layout never jumps.
-const scrambleConfig = (text: string) => ({
-  text,
-  chars: SCRAMBLE_CHARS,
-  speed: 0.4,
-  revealDelay: 0.3,
-  tweenLength: false,
-})
+// Keep the terminal cursor blinking after typing finishes. Flip to false
+// to hide the cursor once the name is fully typed.
+const SHOW_IDLE_CURSOR = true
 
 function Home() {
   const rootRef = useRef<HTMLDivElement>(null)
@@ -31,33 +21,24 @@ function Home() {
     const root = rootRef.current
     if (!root) return
 
-    // Respect users who opt out of motion: leave the real text in place.
+    // Respect reduced motion: the full name is already in the DOM, so just
+    // leave it static (the cursor is non-blinking via CSS).
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const ctx = gsap.context(() => {
-      const cascade = gsap.utils.toArray<HTMLElement>('[data-scramble="cascade"]')
-      const descParts = gsap.utils.toArray<HTMLElement>('[data-scramble="desc"]')
+      const typed = root.querySelector<HTMLElement>('.hero__typed')
+      const cursor = root.querySelector<HTMLElement>('.hero__cursor')
+      if (!typed) return
 
-      const tl = gsap.timeline({ defaults: { ease: 'none' } })
-
-      // Section headings + nav items decode one after another (terminal cascade).
-      cascade.forEach((el, i) => {
-        const text = (el.textContent ?? '').trim()
-        tl.to(
-          el,
-          { duration: 0.8, scrambleText: scrambleConfig(text) },
-          i * 0.08,
-        )
-      })
-
-      // Hero description — kept as two parts so the bold lead survives.
-      descParts.forEach((el) => {
-        const text = (el.textContent ?? '').trim()
-        tl.to(
-          el,
-          { duration: 1.2, scrambleText: scrambleConfig(text) },
-          0.2,
-        )
+      // Clear before paint so the final text never flashes, then type it out.
+      gsap.set(typed, { text: '' })
+      gsap.to(typed, {
+        duration: 1.0,
+        ease: 'none',
+        text: { value: NAME },
+        onComplete: () => {
+          if (!SHOW_IDLE_CURSOR && cursor) cursor.style.display = 'none'
+        },
       })
     }, root)
 
@@ -70,29 +51,29 @@ function Home() {
         <nav className="nav" aria-label="Primary">
           <ul className="nav__links">
             <li>
-              <a className="nav__link nav__link--active" href="/about" aria-current="page" data-scramble="cascade">
+              <a className="nav__link nav__link--active" href="/about" aria-current="page">
                 about
               </a>
             </li>
             <li>
-              <a className="nav__link" href="/projects" data-scramble="cascade">projects</a>
+              <a className="nav__link" href="/projects">projects</a>
             </li>
             <li>
-              <a className="nav__link" href="/blog" data-scramble="cascade">blog</a>
+              <a className="nav__link" href="/blog">blog</a>
             </li>
             <li>
-              <a className="nav__link" href="/sketch" data-scramble="cascade">sketch</a>
+              <a className="nav__link" href="/sketch">sketch</a>
             </li>
             <li>
-              <a className="nav__link" href="/photography" data-scramble="cascade">photography</a>
+              <a className="nav__link" href="/photography">photography</a>
             </li>
           </ul>
           <ul className="nav__lang" aria-label="Language">
             <li>
-              <a className="nav__link" href="/ru" lang="ru" data-scramble="cascade">russian</a>
+              <a className="nav__link" href="/ru" lang="ru">russian</a>
             </li>
             <li>
-              <a className="nav__link" href="/en" lang="en" data-scramble="cascade">english</a>
+              <a className="nav__link" href="/en" lang="en">english</a>
             </li>
           </ul>
         </nav>
@@ -101,11 +82,16 @@ function Home() {
       <main className="main">
         <section className="hero" aria-labelledby="hero-name">
           <h1 className="hero__name" id="hero-name">
-            <span className="hero__highlight" data-scramble="cascade">dilshod egm</span>
+            <span className="hero__highlight">
+              <span className="hero__typed" aria-hidden="true">{NAME}</span><span
+                className="hero__cursor" aria-hidden="true">▮</span>
+              <span className="sr-only">{NAME}</span>
+            </span>
           </h1>
           <p className="hero__desc">
-            <strong className="hero__desc-strong" data-scramble="desc">ux designer &amp; mentor.</strong>{' '}
-            <span data-scramble="desc">sharing insights, experience, and thoughts on design. sometimes about work, sometimes about life. (read if you want)</span>
+            <strong className="hero__desc-strong">ux designer &amp; mentor.</strong>{' '}
+            sharing insights, experience, and thoughts on design. sometimes about
+            work, sometimes about life. (read if you want)
           </p>
         </section>
 
@@ -121,12 +107,11 @@ function Home() {
           />
         </section>
 
-
-      <section className="touch">
-        <a className="touch__cta" href="mailto:dilshodegamnazarov10@gmail.com"data-scramble="cascade">
-        let's build something &gt;
-        </a>
-      </section>
+        <section className="touch">
+          <a className="touch__cta" href="mailto:dilshodegamnazarov10@gmail.com">
+            let's build something &gt;
+          </a>
+        </section>
       </main>
     </div>
   )
