@@ -171,6 +171,10 @@
 }
 
 .touch__cta {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  padding: var(--space-4) var(--space-4);
   font-family: var(--font-family-base);
   font-size: var(--h3-font-size);
   font-weight: var(--h3-font-weight);
@@ -179,11 +183,44 @@
   text-transform: lowercase;
   color: var(--dark-gray);
   text-decoration: underline;
+  transition: color 0.3s ease-out;
+}
+
+/* Dark block behind the text — grows up from the underline on hover/focus. */
+.touch__cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--dark-gray);
+  border-radius: var(--radius-none);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease-out;
+}
+
+.touch__cta:hover,
+.touch__cta:focus-visible {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.touch__cta:hover::before,
+.touch__cta:focus-visible::before {
+  transform: scaleY(1);
 }
 
 .touch__cta:focus-visible {
   outline: 2px solid var(--dark-gray);
   outline-offset: 4px;
+}
+
+/* Reduced motion: no growth animation — switch to the solid block instantly. */
+@media (prefers-reduced-motion: reduce) {
+  .touch__cta,
+  .touch__cta::before {
+    transition: none;
+  }
 }
 
 /* ============================================================
