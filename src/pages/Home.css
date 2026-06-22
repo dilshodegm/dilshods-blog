@@ -46,10 +46,16 @@
 
 .nav__link:hover {
   text-decoration: underline;
+  text-decoration-thickness: 1px;     /* фиксируем толщину */
+  text-underline-offset: 0.15em;      /* фиксируем расстояние от текста */
+  text-decoration-skip-ink:all; 
 }
 
 .nav__link--active {
   text-decoration: underline;
+  text-decoration-thickness: 1px;     /* фиксируем толщину */
+  text-underline-offset: 0.15em;      /* фиксируем расстояние от текста */
+  text-decoration-skip-ink:all; 
 }
 
 .nav__link:focus-visible {
@@ -90,7 +96,7 @@
   border-radius: var(--radius-none);
   /* Reserve the final width ("dilshod egm" = 11 chars + 1 cursor) so the
      monospace block never jumps while the name is typed in. */
-  min-width: calc(12ch + var(--space-4) * 2);
+  /* min-width: calc(12ch + var(--space-4) * 2); */
   white-space: nowrap;
 }
 
@@ -183,6 +189,9 @@
   text-transform: lowercase;
   color: var(--dark-gray);
   text-decoration: underline;
+  text-decoration-thickness: 2px;     /* фиксируем толщину */
+  text-underline-offset: 0.15em;      /* фиксируем расстояние от текста */
+  text-decoration-skip-ink:all; 
   transition: color 0.3s ease-out;
 }
 
