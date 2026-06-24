@@ -111,7 +111,7 @@ function Preloader({ onComplete }: Props) {
           if (el) slotEls.current[i] = el
         }}
       >
-        |
+        /
       </span>,
     )
   }
@@ -129,7 +129,7 @@ function Preloader({ onComplete }: Props) {
           {row}
         </div>
         <span ref={measureRef} className="preloader__measure" aria-hidden="true">
-          ||||||||||
+        /////////
         </span>
         <p className="preloader__label">loading...</p>
       </div>
