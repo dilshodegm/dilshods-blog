@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 import './Preloader.css'
 
 // Tunables.
-const DURATION = 2 // fill 0 -> 100%, seconds (1.5–2.5)
+const DURATION = 3 // fill 0 -> 100%, seconds (1.5–2.5)
 const HOLD = 0.15 // pause on the full row before the reveal, seconds
 const RISE = 0.6 // background rise (bottom -> top), seconds
 const MIN_SLOTS = 8 // floor for very narrow viewports

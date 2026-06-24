@@ -190,6 +190,34 @@
   text-transform: lowercase;
   color: var(--dark-gray);
   text-decoration: underline;
+  text-decoration-thickness: 2px;     /* фиксируем толщину */
+  text-underline-offset: 0.15em;      /* фиксируем расстояние от текста */
+  text-decoration-skip-ink:all; 
+  transition: color 0.3s ease-out;
+}
+
+/* Dark block behind the text — grows up from the underline on hover/focus. */
+.touch__cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--dark-gray);
+  border-radius: var(--radius-none);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease-out;
+}
+
+.touch__cta:hover,
+.touch__cta:focus-visible {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.touch__cta:hover::before,
+.touch__cta:focus-visible::before {
+  transform: scaleY(1);
 }
 
 .touch__cta:focus-visible {
