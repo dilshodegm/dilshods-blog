@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { TextPlugin } from 'gsap/TextPlugin'
+import Header from '../components/Header'
 // Vite resolves & fingerprints the asset (the Vite+React equivalent of
 // Astro's optimized <Image>).
 import portrait from '../assets/portrait.png'
@@ -59,37 +60,7 @@ function Home({ startTyping = false }: Props) {
 
   return (
     <div className="page" ref={rootRef}>
-      <header className="header">
-        <nav className="nav" aria-label="Primary">
-          <ul className="nav__links">
-            <li>
-              <a className="nav__link nav__link--active" href="/about" aria-current="page">
-                about
-              </a>
-            </li>
-            <li>
-              <a className="nav__link" href="/projects">projects</a>
-            </li>
-            <li>
-              <a className="nav__link" href="/blog">blog</a>
-            </li>
-            <li>
-              <a className="nav__link" href="/sketch">sketch</a>
-            </li>
-            <li>
-              <a className="nav__link" href="/photography">photography</a>
-            </li>
-          </ul>
-          <ul className="nav__lang" aria-label="Language">
-            <li>
-              <a className="nav__link" href="/ru" lang="ru">russian</a>
-            </li>
-            <li>
-              <a className="nav__link" href="/en" lang="en">english</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      <Header />
 
       <main className="main">
         <section className="hero" aria-labelledby="hero-name">
