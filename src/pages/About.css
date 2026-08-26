@@ -1,0 +1,63 @@
+/* About page. Shell, header and nav styles come from styles/layout.css.
+   All values reference design tokens (tokens.css); the only literals are
+   inside @media conditions, where CSS cannot read a var(). */
+
+.about {
+  margin-top: var(--hero-offset);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-16);
+}
+
+.about__title {
+  margin: 0;
+}
+
+/* Same dark inline highlight as the hero name, for visual consistency. */
+.about__highlight {
+  display: inline-block;
+  background: var(--dark-gray);
+  color: var(--white);
+  font-size: var(--h1-font-size);
+  font-weight: var(--h1-font-weight);
+  line-height: var(--h1-line-height);
+  letter-spacing: var(--h1-letter-spacing);
+  text-transform: lowercase;
+  padding: var(--space-4) var(--space-4);
+  border-radius: var(--radius-none);
+  white-space: nowrap;
+}
+
+.about__lead {
+  margin: 0;
+  max-width: 510px;
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: 1.4;
+  letter-spacing: var(--body-letter-spacing);
+  text-transform: lowercase;
+  color: var(--dark-gray);
+}
+
+.about__lead-strong {
+  font-weight: var(--body-bold-font-weight);
+}
+
+/* ============================================================
+   Responsive — breakpoints mirror --bp-tablet / --bp-mobile
+   ============================================================ */
+
+/* Tablet — <= --bp-tablet (1024px) */
+@media (max-width: 1024px) {
+  .about {
+    margin-top: var(--space-80);
+  }
+}
+
+/* Mobile — <= --bp-mobile (600px) */
+@media (max-width: 600px) {
+  .about {
+    margin-top: var(--space-45);
+  }
+}
