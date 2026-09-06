@@ -1,7 +1,5 @@
 import Header from '../components/Header'
-// Placeholder until the real portrait is exported from Figma (node 513:31).
-// Drop the photo at src/assets/about-portrait.png and point this import at it.
-import portrait from '../assets/about-portrait.svg'
+import portrait from '../assets/about-portrait.jpg'
 import './About.css'
 
 function About() {
