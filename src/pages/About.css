@@ -1,57 +1,149 @@
-/* About page. Shell, header and nav styles come from styles/layout.css.
-   All values reference design tokens (tokens.css); the only literals are
-   inside @media conditions, where CSS cannot read a var(). */
+/* About page (Figma node 423:20). Shell, header and nav styles come from
+   styles/layout.css. All values reference design tokens (tokens.css); the
+   only literals are inside @media conditions, where CSS cannot read a var(). */
 
+/* Two columns: text block (630) left, square photo (522) right. */
 .about {
-  margin-top: var(--hero-offset);
+  margin-top: var(--about-offset);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-24);
+}
+
+/* Text column matches the photo height; the "now" block sits at its foot. */
+.about__text {
+  width: var(--about-text-width);
+  max-width: 100%;
+  height: var(--about-photo-size);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-16);
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+/* ---------------- Background ---------------- */
+.about__bio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
 }
 
 .about__title {
   margin: 0;
-}
-
-/* Same dark inline highlight as the hero name, for visual consistency. */
-.about__highlight {
-  display: inline-block;
-  background: var(--dark-gray);
-  color: var(--white);
   font-size: var(--h1-font-size);
   font-weight: var(--h1-font-weight);
   line-height: var(--h1-line-height);
   letter-spacing: var(--h1-letter-spacing);
   text-transform: lowercase;
-  padding: var(--space-4) var(--space-4);
-  border-radius: var(--radius-none);
-  white-space: nowrap;
+  color: var(--black);
 }
 
-.about__lead {
+.about__p {
   margin: 0;
-  max-width: 510px;
   font-size: var(--body-font-size);
   font-weight: var(--body-font-weight);
-  line-height: 1.4;
+  line-height: 1.5;
   letter-spacing: var(--body-letter-spacing);
   text-transform: lowercase;
-  color: var(--dark-gray);
+  color: var(--black);
 }
 
-.about__lead-strong {
+/* Paragraphs are one text block: 16px between them, 24px from the title. */
+.about__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.about__strong {
   font-weight: var(--body-bold-font-weight);
+}
+
+/* ---------------- Now ---------------- */
+.about__now {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.about__now-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.about__now-title {
+  margin: 0;
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  letter-spacing: var(--body-letter-spacing);
+  text-transform: lowercase;
+  color: var(--black);
+}
+
+.about__rule {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--black);
+}
+
+.about__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: 1.5;
+  letter-spacing: var(--body-letter-spacing);
+  text-transform: lowercase;
+  color: var(--black);
+}
+
+/* ---------------- Photo ---------------- */
+.about__photo {
+  margin: 0;
+  width: var(--about-photo-size);
+  height: var(--about-photo-size);
+  flex-shrink: 0;
+  background: var(--light-gray);
+  overflow: hidden;
+}
+
+.about__photo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
 }
 
 /* ============================================================
    Responsive — breakpoints mirror --bp-tablet / --bp-mobile
    ============================================================ */
 
-/* Tablet — <= --bp-tablet (1024px) */
+/* Tablet — <= --bp-tablet (1024px): stack, text first, photo below. */
 @media (max-width: 1024px) {
   .about {
     margin-top: var(--space-80);
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-45);
+  }
+
+  .about__text {
+    width: 100%;
+    height: auto;
+    gap: var(--space-80);
+  }
+
+  .about__photo {
+    width: 100%;
+    max-width: var(--about-photo-size);
+    height: auto;
+    aspect-ratio: 1 / 1;
   }
 }
 
@@ -59,5 +151,9 @@
 @media (max-width: 600px) {
   .about {
     margin-top: var(--space-45);
+  }
+
+  .about__text {
+    gap: var(--space-45);
   }
 }

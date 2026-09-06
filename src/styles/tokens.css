@@ -13,6 +13,7 @@
   --dark-gray: #393939;
   --white: #ffffff;
   --light-gray: #e7e7e7;
+  --black: #000000;        /* raw fill on About body text (node 423:20), not a Figma variable */
 
   /* ---------- Typography (Figma Styles) ---------- */
   --font-family-base: "Space Mono", ui-monospace, "Cascadia Mono", monospace;
@@ -54,6 +55,10 @@
   --hero-offset: 162px;    /* header -> hero vertical gap */
   --banner-height: 278px;  /* photo banner height (desktop) */
   --banner-height-mobile: 220px;
+  --space-8: 8px;          /* Figma spacing/s — "now" title -> rule gap */
+  --about-offset: 117px;   /* header -> About content (content top 186px) */
+  --about-text-width: 630px;  /* About text column */
+  --about-photo-size: 522px;  /* About portrait (square) */
 
   /* ---------- Radii ---------- */
   --radius-none: 0;        /* design uses no rounding */

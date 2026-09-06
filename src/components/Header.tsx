@@ -3,8 +3,8 @@ import { Link, useLocation } from 'react-router-dom'
 const NAV_ITEMS = [
   { label: 'about', href: '/about' },
   { label: 'projects', href: '/projects' },
-  { label: 'blog', href: '/blog' },
-  { label: 'sketch', href: '/sketch' },
+  { label: 'bookmarks', href: '/bookmarks' },
+  { label: 'essays', href: '/essays' },
   { label: 'photography', href: '/photography' },
 ]
 
