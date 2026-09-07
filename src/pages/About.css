@@ -2,7 +2,9 @@
    styles/layout.css. All values reference design tokens (tokens.css); the
    only literals are inside @media conditions, where CSS cannot read a var(). */
 
-/* Two columns: text block (630) left, square photo (522) right. */
+/* ============================================================
+   Main section — two columns: text block (630) left, photo (522) right.
+   ============================================================ */
 .about {
   margin-top: var(--about-offset);
   display: flex;
@@ -39,21 +41,20 @@
   color: var(--black);
 }
 
-.about__p {
-  margin: 0;
-  font-size: var(--body-font-size);
-  font-weight: var(--body-font-weight);
-  line-height: 1.5;
-  letter-spacing: var(--body-letter-spacing);
-  text-transform: lowercase;
-  color: var(--black);
-}
-
-/* Paragraphs are one text block: 16px between them, 24px from the title. */
 .about__copy {
   display: flex;
   flex-direction: column;
   gap: var(--space-16);
+}
+
+.about__p {
+  margin: 0;
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: normal;
+  letter-spacing: var(--body-letter-spacing);
+  text-transform: lowercase;
+  color: var(--black);
 }
 
 .about__strong {
@@ -90,13 +91,11 @@
   border-top: 1px solid var(--black);
 }
 
-.about__list {
-  list-style: none;
+.about__now-body {
   margin: 0;
-  padding: 0;
   font-size: var(--body-font-size);
   font-weight: var(--body-font-weight);
-  line-height: 1.5;
+  line-height: normal;
   letter-spacing: var(--body-letter-spacing);
   text-transform: lowercase;
   color: var(--black);
@@ -108,7 +107,6 @@
   width: var(--about-photo-size);
   height: var(--about-photo-size);
   flex-shrink: 0;
-  background: var(--light-gray);
   overflow: hidden;
 }
 
@@ -121,10 +119,117 @@
 }
 
 /* ============================================================
+   Off screen section (Figma node 599:147, top: 867px)
+   ============================================================ */
+.offscreen {
+  margin-top: var(--about-offscreen-gap);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.offscreen__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.offscreen__heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.offscreen__title,
+.offscreen__subtitle {
+  margin: 0;
+  font-size: var(--h1-font-size);
+  font-weight: var(--h1-font-weight);
+  line-height: var(--h1-line-height);
+  letter-spacing: var(--h1-letter-spacing);
+  text-transform: lowercase;
+  color: var(--black);
+}
+
+.offscreen__rule {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--black);
+}
+
+.offscreen__gallery {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-16);
+}
+
+.offscreen__img {
+  height: 142px;
+  object-fit: cover;
+  display: block;
+  min-width: 0;
+}
+
+/* Proportional flex-grow mirrors Figma widths (191:190:116:190:116:190:190).
+   flex-basis 0 distributes available space by ratio, filling the full row. */
+.offscreen__img--w191 { flex: 191; }
+.offscreen__img--w190 { flex: 190; }
+.offscreen__img--w116 { flex: 116; }
+
+/* ============================================================
+   Footer (Figma node 599:207, bottom: 45px)
+   ============================================================ */
+.about-footer {
+  margin-top: var(--about-footer-gap);
+  padding-bottom: var(--space-45);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-24);
+}
+
+.about-footer__email {
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  letter-spacing: var(--body-letter-spacing);
+  text-transform: lowercase;
+  color: var(--dark-gray);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+.about-footer__social {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--space-32);
+}
+
+.about-footer__link {
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  letter-spacing: var(--body-letter-spacing);
+  text-transform: lowercase;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.about-footer__link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+/* ============================================================
    Responsive — breakpoints mirror --bp-tablet / --bp-mobile
    ============================================================ */
 
-/* Tablet — <= --bp-tablet (1024px): stack, text first, photo below. */
+/* Tablet — <= 1024px */
 @media (max-width: 1024px) {
   .about {
     margin-top: var(--space-80);
@@ -145,9 +250,17 @@
     height: auto;
     aspect-ratio: 1 / 1;
   }
+
+  .offscreen {
+    margin-top: var(--space-80);
+  }
+
+  .about-footer {
+    margin-top: var(--space-80);
+  }
 }
 
-/* Mobile — <= --bp-mobile (600px) */
+/* Mobile — <= 600px */
 @media (max-width: 600px) {
   .about {
     margin-top: var(--space-45);
@@ -156,4 +269,28 @@
   .about__text {
     gap: var(--space-45);
   }
+
+  .offscreen {
+    margin-top: var(--space-45);
+  }
+
+  .about-footer {
+    margin-top: var(--space-45);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-24);
+  }
+
+  .about-footer__social {
+    flex-wrap: wrap;
+    gap: var(--space-16);
+  }
+
+  .offscreen__gallery {
+    overflow-x: auto;
+  }
+
+  .offscreen__img--w191 { flex: none; width: 191px; }
+  .offscreen__img--w190 { flex: none; width: 190px; }
+  .offscreen__img--w116 { flex: none; width: 116px; }
 }
