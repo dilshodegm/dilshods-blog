@@ -1,13 +1,44 @@
 import Header from '../components/Header'
-import portrait from '../assets/about-portrait.jpg'
-import photo1 from '../assets/offscreen/costa-2026-1.png'
-import photo2 from '../assets/offscreen/photo-for-site-03-1.png'
-import photo3 from '../assets/offscreen/photo-for-site-05-1.png'
-import photo4 from '../assets/offscreen/photo-for-site-02-1.png'
-import photo5 from '../assets/offscreen/photo-for-site-04-1.png'
-import photo6 from '../assets/offscreen/photo-for-site-06-1.png'
-import photo7 from '../assets/offscreen/img-20260727-1.png'
+import Photo from '../components/Photo'
+
+// Portrait — eager (above fold); 522×522 design square
+import portraitPicture from '../assets/about-portrait.jpg?w=400;800;1200&format=avif;webp;jpeg&as=picture'
+import portraitPlaceholder from '../assets/about-portrait.jpg?w=20&blur=5&as=dataurl'
+
+// Off-screen gallery — lazy; srcset 400/800/1200, avif > webp > jpeg
+import photo1Pic from '../assets/offscreen/costa-2026-1.png?w=400;800;1200&format=avif;webp;jpeg&as=picture'
+import photo1Thumb from '../assets/offscreen/costa-2026-1.png?w=20&blur=5&as=dataurl'
+
+import photo2Pic from '../assets/offscreen/photo-for-site-03-1.png?w=400;800;1200&format=avif;webp;jpeg&as=picture'
+import photo2Thumb from '../assets/offscreen/photo-for-site-03-1.png?w=20&blur=5&as=dataurl'
+
+import photo3Pic from '../assets/offscreen/photo-for-site-05-1.png?w=400;800;1200&format=avif;webp;jpeg&as=picture'
+import photo3Thumb from '../assets/offscreen/photo-for-site-05-1.png?w=20&blur=5&as=dataurl'
+
+import photo4Pic from '../assets/offscreen/photo-for-site-02-1.png?w=400;800;1200&format=avif;webp;jpeg&as=picture'
+import photo4Thumb from '../assets/offscreen/photo-for-site-02-1.png?w=20&blur=5&as=dataurl'
+
+import photo5Pic from '../assets/offscreen/photo-for-site-04-1.png?w=400;800;1200&format=avif;webp;jpeg&as=picture'
+import photo5Thumb from '../assets/offscreen/photo-for-site-04-1.png?w=20&blur=5&as=dataurl'
+
+import photo6Pic from '../assets/offscreen/photo-for-site-06-1.png?w=400;800;1200&format=avif;webp;jpeg&as=picture'
+import photo6Thumb from '../assets/offscreen/photo-for-site-06-1.png?w=20&blur=5&as=dataurl'
+
+import photo7Pic from '../assets/offscreen/img-20260727-1.png?w=400;800;1200&format=avif;webp;jpeg&as=picture'
+import photo7Thumb from '../assets/offscreen/img-20260727-1.png?w=20&blur=5&as=dataurl'
+
 import './About.css'
+
+// Gallery descriptors — flex values mirror Figma proportional widths (191:190:116…)
+const GALLERY = [
+  { pic: photo1Pic, thumb: photo1Thumb, flex: 191, w: 191, sizes: '(max-width: 600px) 191px, 16vw' },
+  { pic: photo2Pic, thumb: photo2Thumb, flex: 190, w: 190, sizes: '(max-width: 600px) 190px, 16vw' },
+  { pic: photo3Pic, thumb: photo3Thumb, flex: 116, w: 116, sizes: '(max-width: 600px) 116px, 10vw' },
+  { pic: photo4Pic, thumb: photo4Thumb, flex: 190, w: 190, sizes: '(max-width: 600px) 190px, 16vw' },
+  { pic: photo5Pic, thumb: photo5Thumb, flex: 116, w: 116, sizes: '(max-width: 600px) 116px, 10vw' },
+  { pic: photo6Pic, thumb: photo6Thumb, flex: 190, w: 190, sizes: '(max-width: 600px) 190px, 16vw' },
+  { pic: photo7Pic, thumb: photo7Thumb, flex: 190, w: 190, sizes: '(max-width: 600px) 190px, 16vw' },
+] as const
 
 const SOCIAL_LINKS = [
   { label: 'telegram', href: '#' },
@@ -60,14 +91,15 @@ function About() {
         </div>
 
         <figure className="about__photo">
-          <img
-            className="about__photo-img"
-            src={portrait}
+          {/* Portrait is eager — above fold; object-position:bottom via About.css override */}
+          <Photo
+            picture={portraitPicture}
+            placeholder={portraitPlaceholder}
+            alt="Black-and-white portrait of dilshod egm looking at the camera"
             width={522}
             height={522}
-            alt="Black-and-white portrait of dilshod egm looking at the camera"
-            loading="lazy"
-            decoding="async"
+            loading="eager"
+            sizes="(max-width: 1024px) 100vw, 522px"
           />
         </figure>
       </main>
@@ -81,13 +113,18 @@ function About() {
           <hr className="offscreen__rule" />
         </div>
         <div className="offscreen__gallery">
-          <img className="offscreen__img offscreen__img--w191" src={photo1} alt="" loading="lazy" decoding="async" />
-          <img className="offscreen__img offscreen__img--w190" src={photo2} alt="" loading="lazy" decoding="async" />
-          <img className="offscreen__img offscreen__img--w116" src={photo3} alt="" loading="lazy" decoding="async" />
-          <img className="offscreen__img offscreen__img--w190" src={photo4} alt="" loading="lazy" decoding="async" />
-          <img className="offscreen__img offscreen__img--w116" src={photo5} alt="" loading="lazy" decoding="async" />
-          <img className="offscreen__img offscreen__img--w190" src={photo6} alt="" loading="lazy" decoding="async" />
-          <img className="offscreen__img offscreen__img--w190" src={photo7} alt="" loading="lazy" decoding="async" />
+          {GALLERY.map(({ pic, thumb, flex, w, sizes }, i) => (
+            <div key={i} className="offscreen__slot" style={{ flex }}>
+              <Photo
+                picture={pic}
+                placeholder={thumb}
+                alt=""
+                width={w}
+                height={142}
+                sizes={sizes}
+              />
+            </div>
+          ))}
         </div>
       </section>
 

@@ -101,7 +101,7 @@
   color: var(--black);
 }
 
-/* ---------------- Photo ---------------- */
+/* ---------------- Portrait photo ---------------- */
 .about__photo {
   margin: 0;
   width: var(--about-photo-size);
@@ -110,11 +110,8 @@
   overflow: hidden;
 }
 
-.about__photo-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* Photo component fills the figure; portrait is anchored to the bottom. */
+.about__photo .photo__img {
   object-position: bottom;
 }
 
@@ -164,18 +161,13 @@
   gap: var(--space-16);
 }
 
-.offscreen__img {
+/* Slot wrapper carries the flex proportion; Photo fills it 100%. */
+.offscreen__slot {
   height: 142px;
-  object-fit: cover;
-  display: block;
   min-width: 0;
+  overflow: hidden;
+  flex-shrink: 1;
 }
-
-/* Proportional flex-grow mirrors Figma widths (191:190:116:190:116:190:190).
-   flex-basis 0 distributes available space by ratio, filling the full row. */
-.offscreen__img--w191 { flex: 191; }
-.offscreen__img--w190 { flex: 190; }
-.offscreen__img--w116 { flex: 116; }
 
 /* ============================================================
    Footer (Figma node 599:207, bottom: 45px)
@@ -290,7 +282,14 @@
     overflow-x: auto;
   }
 
-  .offscreen__img--w191 { flex: none; width: 191px; }
-  .offscreen__img--w190 { flex: none; width: 190px; }
-  .offscreen__img--w116 { flex: none; width: 116px; }
+  /* On mobile restore fixed widths so photos don't collapse */
+  .offscreen__slot {
+    flex: none;
+    width: 191px;
+  }
+
+  .offscreen__slot:nth-child(3),
+  .offscreen__slot:nth-child(5) {
+    width: 116px;
+  }
 }
