@@ -59,6 +59,9 @@
   --about-offset: 117px;   /* header -> About content (content top 186px) */
   --about-text-width: 630px;  /* About text column */
   --about-photo-size: 522px;  /* About portrait (square) */
+  --about-offscreen-gap: 180px; /* gap: about section bottom → off screen top (Figma: 867-687=180) */
+  --about-footer-gap: 253px;    /* gap: off screen bottom → footer top (Figma: ~1327-1074=253) */
+  --space-32: 32px;             /* footer social link gap */
 
   /* ---------- Radii ---------- */
   --radius-none: 0;        /* design uses no rounding */
