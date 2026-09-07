@@ -161,12 +161,24 @@
   gap: var(--space-16);
 }
 
-/* Slot wrapper carries the flex proportion; Photo fills it 100%. */
+/* Slot wrapper — now a <button> for lightbox trigger; Photo fills it 100%. */
 .offscreen__slot {
   height: 142px;
   min-width: 0;
   overflow: hidden;
   flex-shrink: 1;
+
+  /* Reset <button> defaults */
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: block;
+}
+
+.offscreen__slot:focus-visible {
+  outline: 2px solid var(--dark-gray);
+  outline-offset: 2px;
 }
 
 /* ============================================================

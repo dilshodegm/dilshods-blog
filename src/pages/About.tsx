@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import Header from '../components/Header'
 import Photo from '../components/Photo'
+import Lightbox from '../components/Lightbox'
 
 // Portrait — eager (above fold); 522×522 design square
 import portraitPicture from '../assets/about-portrait.jpg?w=400;800;1200&format=avif;webp;jpeg&as=picture'
@@ -38,7 +40,10 @@ const GALLERY = [
   { pic: photo5Pic, thumb: photo5Thumb, flex: 116, w: 116, sizes: '(max-width: 600px) 116px, 10vw' },
   { pic: photo6Pic, thumb: photo6Thumb, flex: 190, w: 190, sizes: '(max-width: 600px) 190px, 16vw' },
   { pic: photo7Pic, thumb: photo7Thumb, flex: 190, w: 190, sizes: '(max-width: 600px) 190px, 16vw' },
-] as const
+]
+
+// Lightbox items — picture data reused from gallery (1200w is enough for full-screen)
+const LIGHTBOX_ITEMS = GALLERY.map(({ pic }) => ({ picture: pic, alt: '' }))
 
 const SOCIAL_LINKS = [
   { label: 'telegram', href: '#' },
@@ -50,6 +55,13 @@ const SOCIAL_LINKS = [
 ]
 
 function About() {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+
+  const openLightbox = (i: number) => setLightboxIndex(i)
+  const closeLightbox = () => setLightboxIndex(null)
+  const prevPhoto = () => setLightboxIndex((i) => (i !== null && i > 0 ? i - 1 : i))
+  const nextPhoto = () => setLightboxIndex((i) => (i !== null && i < GALLERY.length - 1 ? i + 1 : i))
+
   return (
     <div className="page">
       <Header />
@@ -91,7 +103,6 @@ function About() {
         </div>
 
         <figure className="about__photo">
-          {/* Portrait is eager — above fold; object-position:bottom via About.css override */}
           <Photo
             picture={portraitPicture}
             placeholder={portraitPlaceholder}
@@ -114,7 +125,13 @@ function About() {
         </div>
         <div className="offscreen__gallery">
           {GALLERY.map(({ pic, thumb, flex, w, sizes }, i) => (
-            <div key={i} className="offscreen__slot" style={{ flex }}>
+            <button
+              key={i}
+              className="offscreen__slot"
+              style={{ flex }}
+              onClick={() => openLightbox(i)}
+              aria-label={`Open photo ${i + 1} in lightbox`}
+            >
               <Photo
                 picture={pic}
                 placeholder={thumb}
@@ -123,7 +140,7 @@ function About() {
                 height={142}
                 sizes={sizes}
               />
-            </div>
+            </button>
           ))}
         </div>
       </section>
@@ -145,6 +162,16 @@ function About() {
           </ul>
         </nav>
       </footer>
+
+      {lightboxIndex !== null && (
+        <Lightbox
+          items={LIGHTBOX_ITEMS}
+          index={lightboxIndex}
+          onClose={closeLightbox}
+          onPrev={prevPhoto}
+          onNext={nextPhoto}
+        />
+      )}
     </div>
   )
 }
