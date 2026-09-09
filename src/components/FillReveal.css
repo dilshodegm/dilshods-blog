@@ -1,0 +1,66 @@
+/* Fill-reveal hover primitive.
+   Two-layer translateY mechanism:
+     - .fill__base: always visible, inherits light colours from parent
+     - .fill__mask: dark layer, starts translateY(100%) (hidden below)
+     - .fill__mask-inner: content copy, starts translateY(-100%) to counteract mask
+   On interaction both go to translateY(0): fill rises while text stays put. */
+
+.fill {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.fill__base {
+  display: block;
+}
+
+.fill__mask {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--dark-gray);
+  color: var(--white);
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+  pointer-events: none;
+}
+
+.fill__mask-inner {
+  display: block;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-out;
+}
+
+/* Hover only on pointer devices — no sticky state on touch */
+@media (hover: hover) {
+  .fill:hover .fill__mask,
+  .fill:hover .fill__mask-inner {
+    transform: translateY(0);
+  }
+}
+
+/* Focus-visible: same fill + separate visible outline */
+.fill:focus-visible .fill__mask,
+.fill:focus-visible .fill__mask-inner {
+  transform: translateY(0);
+}
+
+.fill:focus-visible {
+  outline: 2px solid var(--dark-gray);
+  outline-offset: 4px;
+}
+
+/* Active state (e.g. selected filter) — fill stays */
+.fill--active .fill__mask,
+.fill--active .fill__mask-inner {
+  transform: translateY(0);
+}
+
+/* Reduced motion: keep end state, skip animation */
+@media (prefers-reduced-motion: reduce) {
+  .fill__mask,
+  .fill__mask-inner {
+    transition-duration: 0.01ms;
+  }
+}

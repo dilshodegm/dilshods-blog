@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Preloader from './components/Preloader'
 import About from './pages/About'
+import Bookmarks from './pages/Bookmarks'
 import ComingSoon from './pages/ComingSoon'
 import Home from './pages/Home'
 
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home startTyping={revealed} />} />
         <Route path="/about" element={<About />} />
+        <Route path="/bookmarks" element={<Bookmarks />} />
         <Route path="*" element={<ComingSoon />} />
       </Routes>
     </BrowserRouter>
