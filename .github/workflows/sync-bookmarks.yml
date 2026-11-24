@@ -1,0 +1,47 @@
+name: Sync bookmarks from Notion
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # every 6 hours (UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-bookmarks
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - name: Sync from Notion
+        run: npm run bookmarks:sync
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATA_SOURCE_ID: ${{ secrets.NOTION_DATA_SOURCE_ID }}
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- src/data/bookmarks.json; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/bookmarks.json
+          # No [skip ci]: this commit must trigger the Cloudflare deploy.
+          git commit -m "chore(bookmarks): sync from notion"
+          git push origin HEAD:main
