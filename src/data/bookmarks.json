@@ -1,5 +1,94 @@
 {
-  "topics": [],
-  "types": [],
-  "bookmarks": []
+  "topics": [
+    {
+      "slug": "design",
+      "label": "design"
+    },
+    {
+      "slug": "programming",
+      "label": "programming"
+    }
+  ],
+  "types": [
+    {
+      "slug": "article",
+      "label": "article"
+    },
+    {
+      "slug": "inspiration",
+      "label": "inspiration"
+    },
+    {
+      "slug": "design-studio",
+      "label": "design studio"
+    }
+  ],
+  "bookmarks": [
+    {
+      "id": "98c5c10c-af4f-4d5a-a8f1-9a5e9db4c608",
+      "title": "ui-web-2.png 2 000 × 2 428 пикс",
+      "url": "https://freight.cargo.site/w/2000/q/75/i/8d2dd6a28d6fa23ecb13ccd585fa9ee2001070fa719fe9eebf0a0b1405c649cc/ui-web-2.png",
+      "domain": "freight.cargo.site",
+      "topics": [
+        "design"
+      ],
+      "type": "inspiration",
+      "addedAt": "2026-11-22T10:12:00.000Z"
+    },
+    {
+      "id": "5e632a1b-1aba-48b2-8c00-4f06f441dd3c",
+      "title": "MA’NO Branding",
+      "url": "https://manobranding.uz/en",
+      "domain": "manobranding.uz",
+      "topics": [
+        "design"
+      ],
+      "type": "inspiration",
+      "addedAt": "2026-11-15T08:01:00.000Z"
+    },
+    {
+      "id": "3477ef72-ab7b-4396-9fc6-5115ba453ad6",
+      "title": "ID—C",
+      "url": "https://id-c.se/",
+      "domain": "id-c.se",
+      "topics": [
+        "design"
+      ],
+      "type": "design-studio",
+      "addedAt": "2026-11-15T06:04:00.000Z"
+    },
+    {
+      "id": "6d79313b-7c0f-4024-8a19-db145b193e1a",
+      "title": "Home — End Speciesism",
+      "url": "https://endspeciesism.org/",
+      "domain": "endspeciesism.org",
+      "topics": [
+        "design"
+      ],
+      "type": "inspiration",
+      "addedAt": "2026-11-15T05:54:00.000Z"
+    },
+    {
+      "id": "060687bd-d9f1-45d7-b89d-c172811a82ec",
+      "title": "Agency  ✦  Design Inspiration",
+      "url": "https://www.seesaw.website/category/agency",
+      "domain": "seesaw.website",
+      "topics": [
+        "design"
+      ],
+      "type": "inspiration",
+      "addedAt": "2026-10-29T06:50:00.000Z"
+    },
+    {
+      "id": "493a93f9-1d5c-496a-8293-d48261fa3644",
+      "title": "How to be more ambitious: A tutorial for humans with models",
+      "url": "https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/",
+      "domain": "felixrieseberg.com",
+      "topics": [
+        "programming"
+      ],
+      "type": "article",
+      "addedAt": "2026-10-24T06:36:00.000Z"
+    }
+  ]
 }
