@@ -57,7 +57,7 @@
    fits them and the inverted fill stays aligned with the base text. */
 .bookmarks__filter .fill__base,
 .bookmarks__filter .fill__mask-inner {
-  padding-block: 0.15em;
+  padding-block: var(--space-4); /* whole pixels: 24 + 2×4 = 32px box */
 }
 
 /* Underline on the visible (base) text layer */

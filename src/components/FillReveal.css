@@ -21,14 +21,16 @@
   overflow: hidden;
   background: var(--dark-gray);
   color: var(--white);
-  transform: translateY(100%);
+  /* +1px: with a fractional element height, subpixel rounding would leave
+     a 1px sliver of the dark mask visible along the bottom edge. */
+  transform: translateY(calc(100% + 1px));
   transition: transform 0.3s ease-out;
   pointer-events: none;
 }
 
 .fill__mask-inner {
   display: block;
-  transform: translateY(-100%);
+  transform: translateY(calc(-100% - 1px));
   transition: transform 0.3s ease-out;
 }
 
