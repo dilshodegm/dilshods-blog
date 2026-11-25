@@ -84,7 +84,10 @@
 .bookmarks__item {
   position: relative;
   break-inside: avoid;
-  margin-bottom: 64px;
+  /* padding, not margin: in CSS columns a bottom margin can be carried over
+     to the top of the next column (Safari), leaving a gap above the first
+     card there. Padding stays inside the item's box. */
+  padding-bottom: 64px;
 }
 
 .bookmarks__empty {
@@ -249,7 +252,7 @@
   }
 
   .bookmarks__item {
-    margin-bottom: var(--space-45);
+    padding-bottom: var(--space-45);
   }
 
   .bookmarks-footer {
