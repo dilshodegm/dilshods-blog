@@ -1,15 +1,43 @@
 {
   "topics": [
     {
+      "slug": "photography",
+      "label": "photography"
+    },
+    {
+      "slug": "self-help",
+      "label": "self-help"
+    },
+    {
       "slug": "design",
       "label": "design"
     },
     {
       "slug": "programming",
       "label": "programming"
+    },
+    {
+      "slug": "philosophy",
+      "label": "philosophy"
     }
   ],
   "types": [
+    {
+      "slug": "video",
+      "label": "video"
+    },
+    {
+      "slug": "book",
+      "label": "book"
+    },
+    {
+      "slug": "instrument",
+      "label": "instrument"
+    },
+    {
+      "slug": "photo",
+      "label": "photo"
+    },
     {
       "slug": "article",
       "label": "article"
@@ -24,6 +52,17 @@
     }
   ],
   "bookmarks": [
+    {
+      "id": "080da1d8-dd4e-4830-9b0c-3c007f8026d5",
+      "title": "Site of Sites | The Best Web Design Inspiration 2027",
+      "url": "https://www.siteofsites.co/?p=1",
+      "domain": "siteofsites.co",
+      "topics": [
+        "design"
+      ],
+      "type": "inspiration",
+      "addedAt": "2026-11-25T06:07:00.000Z"
+    },
     {
       "id": "98c5c10c-af4f-4d5a-a8f1-9a5e9db4c608",
       "title": "ui-web-2.png 2 000 × 2 428 пикс",
@@ -89,6 +128,460 @@
       ],
       "type": "article",
       "addedAt": "2026-10-24T06:36:00.000Z"
+    },
+    {
+      "id": "411c8653-4434-4d6a-a799-ca190d2849f1",
+      "title": "Apify: Маркетплейс инструментов. Можно анализировать отзывы из Google Maps (Google Maps Reviews Scraper)",
+      "url": "https://apify.com/",
+      "domain": "apify.com",
+      "topics": [
+        "design"
+      ],
+      "type": "instrument",
+      "addedAt": "2026-10-20T06:32:00.000Z"
+    },
+    {
+      "id": "584f8495-94c9-4a86-93f0-060a60e7243d",
+      "title": "NAVER Pay Brand Identity",
+      "url": "https://huskyfox.com/projects/naverpay",
+      "domain": "huskyfox.com",
+      "topics": [
+        "design"
+      ],
+      "type": "design-studio",
+      "addedAt": "2026-10-06T08:46:00.000Z"
+    },
+    {
+      "id": "c7f8f374-58d8-416d-9d66-3308c5ac15c3",
+      "title": "Nan Goldin - 21 artworks - photography",
+      "url": "https://www.wikiart.org/en/nan-goldin",
+      "domain": "wikiart.org",
+      "topics": [
+        "photography"
+      ],
+      "type": "photo",
+      "addedAt": "2026-10-06T07:08:00.000Z"
+    },
+    {
+      "id": "9dfd3618-a130-4162-bcd5-d4a4783f44ab",
+      "title": "UX of EdTech",
+      "url": "https://medium.com/ux-of-edtech",
+      "domain": "medium.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-09-19T10:47:00.000Z"
+    },
+    {
+      "id": "cc3e7efe-d534-426e-a91a-5e57969351d0",
+      "title": "LISA SPINDLER",
+      "url": "https://www.spindlerproject.com/",
+      "domain": "spindlerproject.com",
+      "topics": [
+        "photography"
+      ],
+      "type": "photo",
+      "addedAt": "2026-09-17T07:05:00.000Z"
+    },
+    {
+      "id": "6a3a2241-7355-44e7-bda0-33a62cfd0471",
+      "title": "Chiba Tech",
+      "url": "https://www.pentagram.com/",
+      "domain": "pentagram.com",
+      "topics": [
+        "design"
+      ],
+      "type": "design-studio",
+      "addedAt": "2026-09-13T13:46:00.000Z"
+    },
+    {
+      "id": "d30c773d-e977-4cc8-9100-723b5a0f86f5",
+      "title": "Astrae Studio — reboot",
+      "url": "https://astrae.studio/",
+      "domain": "astrae.studio",
+      "topics": [
+        "design"
+      ],
+      "type": "design-studio",
+      "addedAt": "2026-09-13T12:06:00.000Z"
+    },
+    {
+      "id": "c4c41088-7de5-4449-9d6b-692d2ece7354",
+      "title": "World Class Branding, Design & Communication Agency - SNASK",
+      "url": "https://snask.com/",
+      "domain": "snask.com",
+      "topics": [
+        "design"
+      ],
+      "type": "design-studio",
+      "addedAt": "2026-09-13T12:03:00.000Z"
+    },
+    {
+      "id": "1d4bc59e-54a0-4073-9d48-fdf37e9a8fa3",
+      "title": "Брендинговое агентство Plenum Москва | Агентство для решения сложных брендинговых задач",
+      "url": "https://plenum.ru/",
+      "domain": "plenum.ru",
+      "topics": [
+        "design"
+      ],
+      "type": "design-studio",
+      "addedAt": "2026-09-13T11:56:00.000Z"
+    },
+    {
+      "id": "c1eec56b-5aba-4ce5-9c76-1541e2b4dc3d",
+      "title": "Агентство ONY",
+      "url": "https://ony.ru/",
+      "domain": "ony.ru",
+      "topics": [
+        "design"
+      ],
+      "type": "design-studio",
+      "addedAt": "2026-09-13T11:51:00.000Z"
+    },
+    {
+      "id": "63db5ccc-27ba-49cf-a6c8-e9717a031d8c",
+      "title": "Брендинговое агентство Супрематика",
+      "url": "https://suprematika.ru/",
+      "domain": "suprematika.ru",
+      "topics": [
+        "design"
+      ],
+      "type": "design-studio",
+      "addedAt": "2026-09-13T11:50:00.000Z"
+    },
+    {
+      "id": "8d28dd53-dc90-4da7-9d89-27f337ff6f42",
+      "title": "Blink  / Work / Charmer Studio — Design Studio",
+      "url": "https://www.charmerstudio.com/work/blink",
+      "domain": "charmerstudio.com",
+      "topics": [
+        "design"
+      ],
+      "type": "design-studio",
+      "addedAt": "2026-09-13T11:47:00.000Z"
+    },
+    {
+      "id": "34d1712f-09e7-4423-9284-632fa446da68",
+      "title": "ESH gruppa",
+      "url": "https://eshgruppa.com/#tochka",
+      "domain": "eshgruppa.com",
+      "topics": [
+        "design"
+      ],
+      "type": "design-studio",
+      "addedAt": "2026-09-13T11:43:00.000Z"
+    },
+    {
+      "id": "3cd30994-a2dc-8052-8469-d52ddf565b93",
+      "title": "Yousuf Karsh, master photographer of the 20th century",
+      "url": "https://karsh.org",
+      "domain": "karsh.org",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-08-31T08:21:00.000Z"
+    },
+    {
+      "id": "1a7724e6-bcf2-4a67-a4b1-a0cb729cd44a",
+      "title": "Logos that Last: How to Create Iconic Visual Branding: Peters, Allan: 9780760383179: Amazon.com: Books",
+      "url": "https://www.amazon.com/Logos-that-Last-Create-Branding/dp/0760383170/ref=zg_bs_g_3564965011_d_sccl_1/131-7977309-7346113?psc=1",
+      "domain": "amazon.com",
+      "topics": [
+        "design"
+      ],
+      "type": "book",
+      "addedAt": "2026-07-10T05:12:00.000Z"
+    },
+    {
+      "id": "9a2bd0b6-c51d-4b08-a478-7d9655c8c3ee",
+      "title": "48th Publication Design Annual: Society, Publication Desgn: 9781592538768: Amazon.com: Books",
+      "url": "https://www.amazon.com/Publication-Design-Annual-Society-Designers/dp/1592538762",
+      "domain": "amazon.com",
+      "topics": [
+        "design"
+      ],
+      "type": "book",
+      "addedAt": "2026-07-09T13:27:00.000Z"
+    },
+    {
+      "id": "9f25093e-fa85-43b7-86d7-182b6650bf95",
+      "title": "Щука ★ Бренд-бюро",
+      "url": "https://shuka.ru/",
+      "domain": "shuka.ru",
+      "topics": [
+        "design"
+      ],
+      "type": "design-studio",
+      "addedAt": "2026-07-09T13:27:00.000Z"
+    },
+    {
+      "id": "7cb1932e-bd6f-4514-a7e6-5576c5b5ce09",
+      "title": "Shuka ★ Brand Bureau",
+      "url": "https://shuka.design/",
+      "domain": "shuka.design",
+      "topics": [
+        "design"
+      ],
+      "type": "design-studio",
+      "addedAt": "2026-07-09T13:26:00.000Z"
+    },
+    {
+      "id": "55142004-0bd5-44cc-ac57-76e193ed85f4",
+      "title": "Список фильмов",
+      "url": "https://www.instagram.com/reels/DYuWkHNsgpX/",
+      "domain": "instagram.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-06-10T11:36:00.000Z"
+    },
+    {
+      "id": "37a30994-a2dc-8028-964f-f542f8d41885",
+      "title": "Летняя книга",
+      "url": "https://books.yandex.uz/books/xHSKJD7k",
+      "domain": "books.yandex.uz",
+      "topics": [
+        "self-help"
+      ],
+      "type": "book",
+      "addedAt": "2026-06-09T12:23:00.000Z"
+    },
+    {
+      "id": "22c0531b-2af4-4849-8ae5-ae18dd218d56",
+      "title": "A Guide to the Good Life - YouTube - Tom",
+      "url": "https://www.youtube.com/watch?v=veVSNGYRoHg",
+      "domain": "youtube.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-06-05T10:58:00.000Z"
+    },
+    {
+      "id": "fcbe30ef-f8ad-4132-8679-839a20b36740",
+      "title": "Jean-Pierre Ugarte | Artnet",
+      "url": "https://www.artnet.com/artists/jean-pierre-ugarte/",
+      "domain": "artnet.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-06-02T10:22:00.000Z"
+    },
+    {
+      "id": "c5cf4425-86c3-41c7-829d-441619d89878",
+      "title": "AI Makes My Job Miserable. How Do I Escape? - YouTube - Cal Newport",
+      "url": "https://www.youtube.com/watch?v=rsAay1tB1Q8",
+      "domain": "youtube.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-06-01T19:14:00.000Z"
+    },
+    {
+      "id": "fa09132b-e607-4cdb-a51b-1b42a78a1edc",
+      "title": "Claude Design | Создаем Дизайн систему для сайта - YouTube - Макс Куратов",
+      "url": "https://www.youtube.com/watch?v=2R5ZQL258mE",
+      "domain": "youtube.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-05-27T18:53:00.000Z"
+    },
+    {
+      "id": "313a1ac8-fc3c-41f1-a3e9-910ebf277c80",
+      "title": "I Built My Entire Design System in 4 Hours With AI. Full Tutorial (Claude + Cursor + Figma) - YouTube - The Design Project",
+      "url": "https://www.youtube.com/watch?v=nafNPuElCtY&t=92s",
+      "domain": "youtube.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-05-25T16:27:00.000Z"
+    },
+    {
+      "id": "d2a06d73-60ef-452f-94f9-167e469ee276",
+      "title": "How to Build a Design System with Claude + Figma MCP | Vibe to Vector Tutorial - YouTube - Nehmat Gereige | AI-Design Professor",
+      "url": "https://www.youtube.com/watch?v=WbUhThNIyUQ",
+      "domain": "youtube.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-05-25T16:27:00.000Z"
+    },
+    {
+      "id": "1d8f5ae4-078c-4386-9722-8e1785241a60",
+      "title": "Claude + Figma = Design System Components - YouTube - Sergei Chyrkov",
+      "url": "https://www.youtube.com/watch?v=V2Bjb6VtHeA",
+      "domain": "youtube.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-05-25T16:27:00.000Z"
+    },
+    {
+      "id": "56c615f6-1f65-4320-b794-89910cf308b3",
+      "title": "Design Systems for Beginners (Claude Code + Figma) - YouTube - The Design Project",
+      "url": "https://www.youtube.com/watch?v=CrHKvTWECtY",
+      "domain": "youtube.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-05-25T16:27:00.000Z"
+    },
+    {
+      "id": "5acf483f-6429-4458-8917-5ddd91ebda1b",
+      "title": "How Do I Stop Wasting Time? - YouTube - Cal Newport",
+      "url": "https://www.youtube.com/watch?v=o5-kQ29Vo4c",
+      "domain": "youtube.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-05-25T11:56:00.000Z"
+    },
+    {
+      "id": "6b886e07-d333-403e-a030-fe1cb22856e5",
+      "title": "Home | UI / UX Design Inspiration and Design Newsletter",
+      "url": "https://uibits.co/",
+      "domain": "uibits.co",
+      "topics": [
+        "design"
+      ],
+      "type": "inspiration",
+      "addedAt": "2026-05-25T10:41:00.000Z"
+    },
+    {
+      "id": "4d972fa7-4d4b-4bed-96b0-1556bcd43999",
+      "title": "UI.live - Create. Share. Grow.",
+      "url": "https://ui.live/",
+      "domain": "ui.live",
+      "topics": [
+        "design"
+      ],
+      "type": "inspiration",
+      "addedAt": "2026-05-25T10:40:00.000Z"
+    },
+    {
+      "id": "cd7a6eb9-b139-400a-916d-974cf74fb36c",
+      "title": "Designing with Claude: From prompt to production - YouTube - Claude",
+      "url": "https://www.youtube.com/watch?v=Uvl-tRga98g",
+      "domain": "youtube.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-05-23T12:29:00.000Z"
+    },
+    {
+      "id": "fc75eb9c-21e5-4d37-acb2-a1d52e870d01",
+      "title": "Building a ‘Second Brain’: Opportunities, Risks, and Implications for AI Adoption in Singapore - YouTube - Vivian Balakrishnan",
+      "url": "https://www.youtube.com/watch?v=t-4a20_iYhg",
+      "domain": "youtube.com",
+      "topics": [
+        "self-help"
+      ],
+      "type": "video",
+      "addedAt": "2026-05-21T18:09:00.000Z"
+    },
+    {
+      "id": "7df0992f-66a9-4ded-a587-e045fda9d8de",
+      "title": "The Question I Ask Myself At The End of Every Day - RyanHoliday.net",
+      "url": "https://ryanholiday.net/the-question-i-ask-myself-every-day/",
+      "domain": "ryanholiday.net",
+      "topics": [
+        "self-help",
+        "philosophy"
+      ],
+      "type": "article",
+      "addedAt": "2026-05-21T08:19:00.000Z"
+    },
+    {
+      "id": "943a95d1-3636-4ee4-8cc3-c4243644d0c4",
+      "title": "Blog - RyanHoliday.net",
+      "url": "https://ryanholiday.net/blog/",
+      "domain": "ryanholiday.net",
+      "topics": [],
+      "type": "article",
+      "addedAt": "2026-05-21T08:19:00.000Z"
+    },
+    {
+      "id": "345c9275-6f6b-4675-9d63-90d059108cd3",
+      "title": "Ryan Holiday",
+      "url": "https://www.facebook.com/ryanholiday/posts/the-question-i-ask-myself-at-the-end-of-every-day/1548613526627555/",
+      "domain": "facebook.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-05-21T08:19:00.000Z"
+    },
+    {
+      "id": "4de6dbab-7b11-4335-9eee-f235d9432746",
+      "title": "This is the MOST expensive screen in your app (and you're probably designing it wrong)",
+      "url": "https://designerup.co/blog/how-to-design-paywall-subscription-and-upgrade-screens/",
+      "domain": "designerup.co",
+      "topics": [
+        "design"
+      ],
+      "type": "video",
+      "addedAt": "2026-05-21T08:18:00.000Z"
+    },
+    {
+      "id": "22bbc6a7-1659-4caf-94ae-8d562175200e",
+      "title": "ATN Summit 2026 | Steven Rubio & Oliver Uszkurat | D5 Render | Stop Rendering, Start Designing - YouTube",
+      "url": "https://www.youtube.com/watch?v=hXU8Kqbp2YU",
+      "domain": "youtube.com",
+      "topics": [],
+      "type": null,
+      "addedAt": "2026-05-21T06:34:00.000Z"
+    },
+    {
+      "id": "e53d19e7-fc60-4e20-bd34-98d15065ab02",
+      "title": "I Used Claude Design for UX/UI - What Designers Should Know - YouTube - Elizabeth Alli - DesignerUp",
+      "url": "https://www.youtube.com/watch?v=xwzXSegBJbo",
+      "domain": "youtube.com",
+      "topics": [
+        "design"
+      ],
+      "type": "video",
+      "addedAt": "2026-05-21T06:03:00.000Z"
+    },
+    {
+      "id": "fa54d77c-ed46-4862-8a63-60eb7e61c798",
+      "title": "Почему ты ВСЕГДА УСТАВШИЙ. Наука - YouTube - Просто Глеб",
+      "url": "https://www.youtube.com/watch?v=4KMq_N89MUs",
+      "domain": "youtube.com",
+      "topics": [
+        "self-help"
+      ],
+      "type": "video",
+      "addedAt": "2026-05-20T12:08:00.000Z"
+    },
+    {
+      "id": "2c2f7404-a014-479a-beb7-968009323416",
+      "title": "Regain Your Ability to Think (in 60 Minutes a Week) | Cal Newport - YouTube - Cal Newport",
+      "url": "https://www.youtube.com/watch?v=TeWEUIvoyrU",
+      "domain": "youtube.com",
+      "topics": [
+        "self-help"
+      ],
+      "type": "video",
+      "addedAt": "2026-05-20T12:08:00.000Z"
+    },
+    {
+      "id": "2ba2e7c7-ebc7-4414-9697-ffbf3be3007a",
+      "title": "Richard Feynman: Can Machines Think? - YouTube - Lex Clips",
+      "url": "https://www.youtube.com/watch?v=ipRvjS7q1DI",
+      "domain": "youtube.com",
+      "topics": [
+        "self-help",
+        "programming"
+      ],
+      "type": "video",
+      "addedAt": "2026-05-20T11:48:00.000Z"
+    },
+    {
+      "id": "a973b7b2-eeef-4559-b248-6e53483937aa",
+      "title": "Viewport UI - UI curated experiences for you inspiration.",
+      "url": "https://viewport-ui.design/",
+      "domain": "viewport-ui.design",
+      "topics": [
+        "design"
+      ],
+      "type": "inspiration",
+      "addedAt": "2026-05-20T06:06:00.000Z"
+    },
+    {
+      "id": "4ed7f69d-2c12-4f3b-aab7-dbf8c91c887a",
+      "title": "SEESAW  ✦  Design Inspiration",
+      "url": "https://www.seesaw.website/",
+      "domain": "seesaw.website",
+      "topics": [
+        "design"
+      ],
+      "type": "inspiration",
+      "addedAt": "2026-05-20T06:06:00.000Z"
     }
   ]
 }
