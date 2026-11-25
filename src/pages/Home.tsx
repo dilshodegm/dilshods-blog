@@ -55,7 +55,13 @@ function Home({ startTyping = false }: Props) {
       })
     }, root)
 
-    return () => ctx.revert()
+    return () => {
+      ctx.revert()
+      // revert() wipes the typed text, so allow the next run to type again.
+      // Without this, StrictMode's mount → cleanup → mount (and any remount
+      // with startTyping already true) left the name empty.
+      typedRef.current = false
+    }
   }, [startTyping])
 
   return (
