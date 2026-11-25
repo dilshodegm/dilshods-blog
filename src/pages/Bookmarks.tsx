@@ -45,28 +45,23 @@ type FilterRowProps = {
   items: TaxonomyItem[]
   active: string | null
   onSelect: (slug: string | null) => void
-  size: 'large' | 'small'
 }
 
-function FilterRow({ label, items, active, onSelect, size }: FilterRowProps) {
-  const options = [{ slug: null, label: 'all' }, ...items]
+// No "all" item: clicking the active filter again clears it.
+function FilterRow({ label, items, active, onSelect }: FilterRowProps) {
   return (
-    <div
-      role="group"
-      aria-label={label}
-      className={`bookmarks__filters bookmarks__filters--${size}`}
-    >
-      {options.map(({ slug, label: text }) => {
+    <div role="group" aria-label={label} className="bookmarks__filters">
+      {items.map(({ slug, label: text }) => {
         const isActive = slug === active
         return (
           <FillReveal
-            key={slug ?? 'all'}
+            key={slug}
             as="button"
             type="button"
             active={isActive}
             className="bookmarks__filter"
             aria-pressed={isActive}
-            onClick={() => onSelect(slug)}
+            onClick={() => onSelect(isActive ? null : slug)}
           >
             {text}
           </FillReveal>
@@ -99,7 +94,6 @@ function Bookmarks() {
   }, [searchParams, setSearchParams, topicParam, typeParam, topic, type])
 
   const selectTopic = (slug: string | null) => {
-    if (slug === topic) return
     const next = new URLSearchParams(searchParams)
     if (slug) next.set('topic', slug)
     else next.delete('topic')
@@ -110,7 +104,6 @@ function Bookmarks() {
   }
 
   const selectType = (slug: string | null) => {
-    if (slug === type) return
     const next = new URLSearchParams(searchParams)
     if (slug) next.set('type', slug)
     else next.delete('type')
@@ -129,10 +122,10 @@ function Bookmarks() {
         {(TOPICS.length > 0 || typesInTopic.length > 0) && (
           <div className="bookmarks__filter-rows">
             {TOPICS.length > 0 && (
-              <FilterRow label="topic" items={TOPICS} active={topic} onSelect={selectTopic} size="large" />
+              <FilterRow label="topic" items={TOPICS} active={topic} onSelect={selectTopic} />
             )}
             {typesInTopic.length > 0 && (
-              <FilterRow label="type" items={typesInTopic} active={type} onSelect={selectType} size="small" />
+              <FilterRow label="type" items={typesInTopic} active={type} onSelect={selectType} />
             )}
           </div>
         )}

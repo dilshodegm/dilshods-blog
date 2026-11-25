@@ -20,26 +20,20 @@
   gap: 64px;
 }
 
-/* ---- Filter rows: topic (large) above type (small) ---- */
+/* ---- Filter rows: topic above type, both left-aligned, same size ----
+   Row gap equals the gap between wrapped lines, so spacing is uniform. */
 .bookmarks__filter-rows {
   display: flex;
   flex-direction: column;
-  gap: var(--space-32);
+  gap: var(--space-24);
 }
 
 .bookmarks__filters {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-}
-
-.bookmarks__filters--large {
-  justify-content: space-between;
-  row-gap: 45px;
-}
-
-.bookmarks__filters--small {
-  gap: var(--space-16) var(--space-32);
+  justify-content: flex-start;
+  gap: var(--space-24) var(--space-45);
 }
 
 .bookmarks__filter {
@@ -50,22 +44,12 @@
   cursor: pointer;
 
   font-family: var(--font-family-base);
-  text-transform: lowercase;
-  color: var(--dark-gray);
-}
-
-.bookmarks__filters--large .bookmarks__filter {
   font-size: var(--h3-font-size);
   font-weight: var(--h3-font-weight);
   line-height: var(--h3-line-height);
   letter-spacing: var(--h3-letter-spacing);
-}
-
-.bookmarks__filters--small .bookmarks__filter {
-  font-size: var(--body-font-size);
-  font-weight: var(--body-font-weight);
-  line-height: var(--body-line-height);
-  letter-spacing: var(--body-letter-spacing);
+  text-transform: lowercase;
+  color: var(--dark-gray);
 }
 
 /* Underline on the visible (base) text layer */
@@ -240,11 +224,10 @@
   }
 
   .bookmarks__filter-rows {
-    gap: var(--space-24);
+    gap: var(--space-16);
   }
 
-  .bookmarks__filters--large {
-    justify-content: flex-start;
+  .bookmarks__filters {
     gap: var(--space-16) var(--space-24);
   }
 
