@@ -1,18 +1,18 @@
 import { Link, useLocation } from 'react-router-dom'
 
 const NAV_ITEMS = [
+  { label: 'home', href: '/' },
   { label: 'about', href: '/about' },
   { label: 'projects', href: '/projects' },
   { label: 'bookmarks', href: '/bookmarks' },
   { label: 'essays', href: '/essays' },
+  { label: 'books', href: '/books' },
   { label: 'photography', href: '/photography' },
 ]
 
 function Header() {
   const { pathname } = useLocation()
-  // The landing page is the "about" section, so "/" keeps that item active
-  // (matches the Figma home design, where "about" is underlined).
-  const activeHref = pathname === '/' ? '/about' : pathname
+  const activeHref = pathname
 
   return (
     <header className="header">
