@@ -69,7 +69,12 @@
   column-gap: 127px;
 }
 
+/* position: relative anchors the card's .sr-only "(opens in new tab)" span.
+   Without it the absolutely positioned span's static position is computed
+   in the unfragmented multicol flow (one tall column), pushing the
+   document's scroll height far below the footer. */
 .bookmarks__item {
+  position: relative;
   break-inside: avoid;
   margin-bottom: 64px;
 }
